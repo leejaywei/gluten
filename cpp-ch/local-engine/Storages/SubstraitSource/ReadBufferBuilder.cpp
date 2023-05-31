@@ -272,11 +272,16 @@ private:
         auto endpoint = config.getString(config_prefix + ".endpoint", "https://s3.us-west-2.amazonaws.com");
         String region_name;
         const char * amazon_suffix = ".amazonaws.com";
+        const char * amazon_suffix_cn = ".amazonaws.com.cn";
         const char * amazon_prefix = "https://s3.";
+        int amazon_suffix_len=strlen(amazon_suffix);
         if (endpoint.find(amazon_suffix) != std::string::npos)
         {
             assert(endpoint.starts_with(amazon_prefix));
-            region_name = endpoint.substr(strlen(amazon_prefix), endpoint.size() - strlen(amazon_prefix) - strlen(amazon_suffix));
+            if(endpoint.find(amazon_suffix_cn) != std::string::npos){
+                amazon_suffix_len=strlen(amazon_suffix_cn);
+            }
+            region_name = endpoint.substr(strlen(amazon_prefix), endpoint.size() - strlen(amazon_prefix) - amazon_suffix_len);
             assert(region_name.find('.') == std::string::npos);
         }
         // for AWS CN, the endpoint is like: https://s3.cn-north-1.amazonaws.com.cn, should still work with above code (NOT TESTED)

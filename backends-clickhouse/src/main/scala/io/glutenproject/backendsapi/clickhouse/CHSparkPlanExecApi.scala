@@ -477,7 +477,7 @@ class CHSparkPlanExecApi extends SparkPlanExecApi {
                 scan,
                 Seq.empty,
                 Seq.empty,
-                tableMeta.storage.properties,
+                tableMeta.storage.properties ++ tableMeta.properties,
                 tableMeta.dataSchema)
             } else {
               null

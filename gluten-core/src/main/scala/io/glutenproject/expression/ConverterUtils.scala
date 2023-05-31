@@ -385,6 +385,7 @@ object ConverterUtils extends Logging {
           case "ClickHouseScan" => ReadFileFormat.MergeTreeReadFormat
           case "TextScan" => ReadFileFormat.HiveTextReadFormat
           case "JsonScan" => ReadFileFormat.JsonReadFormat
+          case "GlutenTextScan" => ReadFileFormat.HiveTextReadFormat
           case _ => ReadFileFormat.UnknownFormat
         }
       case f: FileSourceScanExecTransformer =>
