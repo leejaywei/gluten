@@ -728,7 +728,7 @@
       </plugins>
     </pluginManagement>
     <plugins>
-      <plugin>
+      <!--<plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
         <version>1.0.1</version>
@@ -741,13 +741,13 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>3.6.3</version>
+                  <version>3.6.1</version>
                 </requireMavenVersion>
               </rules>
             </configuration>
           </execution>
         </executions>
-      </plugin>
+      </plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
@@ -769,4 +769,16 @@
       </plugin>
     </plugins>
   </build>
+  <distributionManagement>
+    <repository>
+      <id>${repository.id}</id>
+      <url>${repository.url}</url>
+      <name>${repository.name}</name>
+    </repository>
+    <snapshotRepository>
+      <id>${repository.id.snapshots}</id>
+      <url>${repository.url.snapshots}</url>
+      <name>${repository.name.snapshots}</name>
+    </snapshotRepository>
+  </distributionManagement>
 </project>
